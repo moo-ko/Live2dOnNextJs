@@ -1,7 +1,6 @@
 'use client';
 
 import { LAppDelegate } from '@/lib/live2d/demo/lappdelegate';
-import { LAppGlManager } from '@/lib/live2d/demo/lappglmanager';
 import { useEffect, useRef } from 'react';
 
 export default function Live2dView() {
@@ -22,8 +21,7 @@ export default function Live2dView() {
   }, [ref.current]);
 
   const initialize = async () => {
-    if (ref.current) LAppGlManager.setCanvas(ref.current);
-    LAppDelegate.getInstance().initialize();
+    LAppDelegate.getInstance().initialize([ref.current]);
     LAppDelegate.getInstance().run();
   };
 

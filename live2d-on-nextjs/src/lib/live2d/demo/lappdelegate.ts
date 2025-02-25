@@ -175,11 +175,11 @@ export class LAppDelegate {
   /**
    * APPに必要な物を初期化する。
    */
-  public initialize(): boolean {
+  public initialize(canvasList: HTMLCanvasElement[]): boolean {
     // Cubism SDKの初期化
     this.initializeCubism();
 
-    this.initializeSubdelegates();
+    this.initializeSubdelegates(canvasList);
     this.initializeEventListener();
 
     return true;
@@ -196,16 +196,16 @@ export class LAppDelegate {
 
     // ポインタ関連コールバック関数登録
     document.addEventListener('pointerdown', this.pointBeganEventListener, {
-      passive: true
+      passive: true,
     });
     document.addEventListener('pointermove', this.pointMovedEventListener, {
-      passive: true
+      passive: true,
     });
     document.addEventListener('pointerup', this.pointEndedEventListener, {
-      passive: true
+      passive: true,
     });
     document.addEventListener('pointercancel', this.pointCancelEventListener, {
-      passive: true
+      passive: true,
     });
   }
 
@@ -227,7 +227,7 @@ export class LAppDelegate {
   /**
    * Canvasを生成配置、Subdelegateを初期化する
    */
-  private initializeSubdelegates(): void {
+  private initializeSubdelegates(canvasList: HTMLCanvasElement[]): void {
     let width: number = 100;
     let height: number = 100;
     if (LAppDefine.CanvasNum > 3) {
@@ -242,13 +242,11 @@ export class LAppDelegate {
     this._canvases.prepareCapacity(LAppDefine.CanvasNum);
     this._subdelegates.prepareCapacity(LAppDefine.CanvasNum);
     for (let i = 0; i < LAppDefine.CanvasNum; i++) {
-      const canvas = document.createElement('canvas');
+      if (i >= canvasList.length) break;
+      const canvas = canvasList[i];
       this._canvases.pushBack(canvas);
       canvas.style.width = `${width}vw`;
       canvas.style.height = `${height}vh`;
-
-      // キャンバスを DOM に追加
-      document.body.appendChild(canvas);
     }
 
     for (let i = 0; i < this._canvases.getSize(); i++) {
