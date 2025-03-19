@@ -38,3 +38,5 @@ next-env.d.ts
 # live2d
 /public/live2d/
 /src/lib/live2d/
+!/src/lib/live2d/demo/lappdefine.ts
+!/src/lib/live2d/demo/lappdelegate.ts
