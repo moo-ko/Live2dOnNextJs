@@ -1,4 +1,4 @@
-# Next.js に Live2D Cubism SDK for Web の公式デモアプリを表示させるサンプル
+# Next.js 上で動作する WEB アプリに Live2D Cubism SDK for Web の公式デモアプリを表示させるサンプル
 
 ## ビルド
 
@@ -19,7 +19,7 @@ npm run dev
 ## 開発環境
 
 * Live2D Cubism 5 SDK for Web R3
-* Next.js 15.1.7
+* Next.js 15.2.1
 * Node.js 22.14.0
 
 Dev Container の設定をしているので、Docker と VSCode の拡張機能 Dev Containers をインストールし、Docker と VSCode を起動した後に、VSCode を Dev Container で起動しなおせば開発に必要なものはそろった状態で動作させられると思います。
@@ -43,7 +43,7 @@ https://www.docker.com/
 
 ### src/components/live2d
 
-live2d を表示させるためのコンポーネントです。live2dのメソッドを呼び出しを行います。
+live2d を表示させるためのコンポーネントです。live2dのメソッドの呼び出しを行います。
 
 ### src/lid/live2d
 
